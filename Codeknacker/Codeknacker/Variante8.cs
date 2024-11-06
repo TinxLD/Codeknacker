@@ -143,6 +143,11 @@ namespace Codeknacker
         public static int TryGoodNumber(int minNum, int maxNum)
         {
             int numbercount = maxNum - minNum;
+            double maxforgood = Math.Log(numbercount, 2);
+            return (int)Math.Floor(maxforgood);
+
+            /*
+            int numbercount = maxNum - minNum;
             int maxforgood = 0;
 
             while (numbercount > 1)
@@ -152,6 +157,7 @@ namespace Codeknacker
             }
 
             return maxforgood;
+            */
         }
     }
 }
