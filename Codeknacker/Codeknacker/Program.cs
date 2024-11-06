@@ -59,6 +59,9 @@ namespace Codeknacker
                     case 11:
                         ZVariante2.Run();
                         break;
+                    case 12:
+                        ZVariante3.Run();
+                        break;
                     default:
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("\n[!] Ungültige Eingabe. Bitte eine Zahl zwischen 0 und 10 eingeben.");
@@ -99,7 +102,8 @@ namespace Codeknacker
                             "7          -> Variante 7\n" +
                             "8, 9       -> Variante 9\n" +
                             "10         -> Variante Z1" +
-                            "11         -> Variante Z2 (Special)";
+                            "11         -> Variante Z2 (Special)\n" +
+                            "12         -> Variante Z3 (Special)";
             Console.ForegroundColor = ConsoleColor.Gray;
             Console.WriteLine("=================================================================================");
             Console.ForegroundColor = ConsoleColor.Green;
