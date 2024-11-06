@@ -1,5 +1,6 @@
-﻿using System;
+using System;
 using System.Diagnostics;
+using System.Text;
 
 namespace Codeknacker
 {
@@ -16,33 +17,33 @@ namespace Codeknacker
 
             int numbersize = 20000;
 
-            string number1 = "123456789";
-            string number2 = "888888888";
+            string number1 = CreateRandomNumberString(numbersize);
+            string number2 = CreateRandomNumberString(numbersize);
 
-            numberResult result = CompareNumber(number1, number2);
+            NumberResult result = CompareNumber(number1, number2);
 
 
             switch (result) 
             {
-                case numberResult.num1:
+                case NumberResult.num1:
                     Console.WriteLine(">> Nummer 1 Größer <<\n");
                     break;
-                case numberResult.num2:
+                case NumberResult.num2:
                     Console.WriteLine(">> Nummer 2 Größer <<\n");
                     break;
-                case numberResult.same:
+                case NumberResult.same:
                     Console.WriteLine(">> Beide gleich <<\n");
                     break;
             }
         }
 
-        public static numberResult CompareNumber(string num1, string num2)
+        public static NumberResult CompareNumber(string num1, string num2)
         {
             //nicht gleiche länge = der längere string ist grßer
             if (num1.Length > num2.Length)
-                return numberResult.num1;
+                return NumberResult.num1;
             if (num1.Length < num2.Length)
-                return numberResult.num2;
+                return NumberResult.num2;
 
             //Wenn die länge gleich = jede zahl einzelend vergleichen
             for (int i = 0; i < num1.Length; i++)
@@ -50,16 +51,28 @@ namespace Codeknacker
                 Console.WriteLine($"Num1 num:{num1[i]} | Num2 num:{num2[i]}");
 
                 if (num1[i] > num2[i])
-                    return numberResult.num1;
+                    return NumberResult.num1;
                 if (num1[i] < num2[i])
-                    return numberResult.num2;
+                    return NumberResult.num2;
             }
 
             // Zahlen sind gleich
-            return numberResult.same;
+            return NumberResult.same;
+        }
+        private static string CreateRandomNumberString(int length)
+        {
+            Random random = new Random();
+            StringBuilder sb = new StringBuilder(length);
+
+            for (int i = 0; i < length; i++)
+            {
+                sb.Append(random.Next(0, 10));
+            }
+
+            return sb.ToString().TrimStart('0');
         }
 
-        public enum numberResult
+        public enum NumberResult
         {
             num1,
             num2,
